@@ -91,7 +91,8 @@ app.all('/player/growid/login/validate', (req, res) => {
         {"status":"success","message":"Account Validated.","token":"${token}","url":"","accountType":"growtopia"},
     );
 });
-res.send('/growid/checktoken', (req, res) => {
+res.req(
+('/growid/checktoken', (req, res) => {
     res.send({"status":"success","message":"Account Validated.","token":"${req.body.refreshToken}","url":"","accountType":"growtopia"},);
 });
   } else {
