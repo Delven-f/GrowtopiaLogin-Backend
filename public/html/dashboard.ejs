@@ -62,19 +62,25 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Auto-fill GrowID from localStorage
             if (localStorage.getItem('growId')) {
                 document.getElementById('loginGrowId').value = localStorage.getItem('growId');
             }
 
-            const loginGrowId = document.getElementById('loginGrowId').value
-            const loginPassword = document.getElementById('loginPassword').value
+            // Debugging log for auto-filled values
+            console.log('GrowID auto-filled:', document.getElementById('loginGrowId').value);
         });
+
+        // Event listener for login button
         document.getElementById('loginButton').addEventListener('click', function (event) {
             event.preventDefault();
 
             const loginForm = document.getElementById('loginForm');
             const uName = document.getElementById('loginGrowId').value;
             const uPass = document.getElementById('loginPassword').value;
+
+            // Debugging log for input values
+            console.log('GrowID:', uName, 'Password:', uPass);
 
             if (!uName || !uPass) {
                 document.getElementById('errorDiv').classList.remove('hidden');
@@ -86,11 +92,13 @@
                 return;
             } else {
                 loginForm.submit();
-                localStorage.setItem('growId', document.getElementById('loginGrowId').value);
+                localStorage.setItem('growId', uName); // Save GrowID to localStorage
             }
-        })
+        });
+
+        // Toggle visibility of the password field
         document.getElementById('toggleLogPassword').addEventListener('click', function () {
-            const LpasswordField = document.getElementById('loginPassword')
+            const LpasswordField = document.getElementById('loginPassword');
             const LpasswordFieldType = LpasswordField.getAttribute('type');
             if (LpasswordFieldType === 'password') {
                 LpasswordField.setAttribute('type', 'text');
